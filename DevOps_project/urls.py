@@ -16,7 +16,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from .views import get_people, get_visit_count
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('people/', get_people),
+    path('visit-count/', get_visit_count)
 ]
