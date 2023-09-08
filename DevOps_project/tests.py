@@ -15,10 +15,10 @@ class PersonListViewTest(TestCase):
         self.assertContains(response, 'John')
         self.assertContains(response, 'Doe')
 
-# class VisitCountViewTest(TestCase):
-#     def test_visit_count_view(self):
-#         response = self.client.get(reverse('visit-count'))
-#         self.assertEqual(response.status_code, 200)
-#         counter = VisitCounter()
-#         count = counter.get_count()
-#         self.assertEqual(int(response.json()['visit_count']), count + 1)
+class VisitCountViewTest(TestCase):
+    def test_visit_count_view(self):
+        response = self.client.get(reverse('visit-count'))
+        self.assertEqual(response.status_code, 200)
+        counter = VisitCounter()
+        count = counter.get_count()
+        self.assertEqual(int(response.json()['visit_count']), count)
