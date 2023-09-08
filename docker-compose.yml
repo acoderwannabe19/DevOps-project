@@ -1,0 +1,34 @@
+version: '3.8'
+services:
+  # Django web application
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: django-app:1.0  # Set the image name and tag here
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+      - redis  # Add a dependency on the Redis service
+    environment:
+      - DEBUG=True
+      - DJANGO_DB_HOST=db
+      - DJANGO_DB_PORT=5432
+      - DJANGO_DB_NAME=people
+      - DJANGO_DB_USER=postgres
+      - DJANGO_DB_PASSWORD=passer123
+
+  # PostgreSQL database
+  db:
+    image: postgres:15.3
+    environment:
+      POSTGRES_DB: people
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: passer123
+
+  # Redis service
+  redis:
+    image: redis:alpine
