@@ -87,7 +87,7 @@ DATABASES = {
         "NAME": "people",
         "USER": "postgres",
         "PASSWORD": "awa",
-        "HOST": "db", 
+        "HOST": "db",
         "PORT": "5432",
     }
 }
@@ -100,7 +100,8 @@ REDIS_PORT = 6379
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-    "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+        "NAME": """django.contrib.auth.password_validation
+        .UserAttributeSimilarityValidator""",
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
