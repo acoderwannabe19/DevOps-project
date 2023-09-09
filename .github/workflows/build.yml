@@ -1,4 +1,4 @@
-name: Python package
+name: DevOps Project
 
 on: 
   push:
@@ -26,14 +26,14 @@ jobs:
       run: python manage.py test
         
     - name: Build Docker image
-      run: docker build -t devops-project:latest . 
+      run: docker build -t django-app:1.0 . 
       
     - name: Log in to Docker Hub
       run: echo ${{ secrets.DOCKERHUB_PASSWORD }} | docker login --username ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
 
     - name: Push Docker image to Docker Hub
       run: |
-        docker tag devops-project:latest nasalane/devops-project:latest
-        docker push nasalane/devops-project:latest
+        docker tag django-app:1.0 nasalane/django-app:1.0
+        docker push nasalane/django-app:1.0
       
 

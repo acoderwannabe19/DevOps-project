@@ -7,7 +7,7 @@ from .utils import VisitCounter
 
 class PersonListViewTest(TestCase):
     def test_user_list_view(self):
-        Person.objects.create(id=1, username='user1', email='user1@example.com', first_name='John', last_name='Doe')
+        Person.objects.create(id=1000, username='user1', email='user1@example.com', first_name='John', last_name='Doe')
         response = self.client.get(reverse('people-list'))
         self.assertEqual(response.status_code, 200)
         self.assertContains(response, 'user1')

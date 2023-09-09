@@ -86,9 +86,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'people',
         'USER': 'postgres',
-        'PASSWORD': 'passer123',
-        'HOST': 'db',
-        'PORT': '5432',
+        'PASSWORD': 'awa',
+        'HOST': 'db',  # This should match the service name defined in your docker-compose.yml file
+        'PORT': '5432',  # PostgreSQL default port
     }
 }
 # Redis settings

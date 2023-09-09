@@ -19,15 +19,17 @@ services:
       - DJANGO_DB_PORT=5432
       - DJANGO_DB_NAME=people
       - DJANGO_DB_USER=postgres
-      - DJANGO_DB_PASSWORD=passer123
+      - DJANGO_DB_PASSWORD=awa
 
   # PostgreSQL database
   db:
-    image: postgres:15.3
+    image: postgres:15.4
+    user: postgres
     environment:
       POSTGRES_DB: people
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: passer123
+      POSTGRES_PASSWORD: awa
+      POSTGRES_HOST: db
 
   # Redis service
   redis:
