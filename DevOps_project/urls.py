@@ -19,7 +19,7 @@ from django.urls import path
 from .views import get_people, get_visit_count
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('people/', get_people, name='people-list'),
-    path('visit-count/', get_visit_count, name='visit-count')
+    path("admin/", admin.site.urls),
+    path("people/", get_people, name="people-list"),
+    path("visit-count/", get_visit_count, name="visit-count"),
 ]

@@ -10,10 +10,10 @@ def get_people(request):
     users = Person.objects.all()
     user_data = [
         {
-            'username': user.username,
-            'email': user.email,
-            'first_name': user.first_name,
-            'last_name': user.last_name,
+            "username": user.username,
+            "email": user.email,
+            "first_name": user.first_name,
+            "last_name": user.last_name,
         }
         for user in users
     ]
@@ -21,8 +21,7 @@ def get_people(request):
 
 
 def get_visit_count(request):
-    
     counter = VisitCounter()
     counter.increment()
     count = counter.get_count()
-    return JsonResponse({'visit_count': count})
+    return JsonResponse({"visit_count": count})
