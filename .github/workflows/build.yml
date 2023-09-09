@@ -30,8 +30,8 @@ jobs:
         docker --version
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
-    - name: Build Docker Compose stack
+    - name: Build the Docker Compose stack
       run: docker-compose build
 
-    - name: Push Docker Compose stack to Docker Hub
+    - name: Push the Docker Compose stack to Docker Hub
       run: docker-compose push
