@@ -87,8 +87,8 @@ DATABASES = {
         "NAME": "people",
         "USER": "postgres",
         "PASSWORD": "awa",
-        "HOST": "db",  # This should match the service name defined in your docker-compose.yml file
-        "PORT": "5432",  # PostgreSQL default port
+        "HOST": "db", 
+        "PORT": "5432",
     }
 }
 # Redis settings
@@ -100,7 +100,7 @@ REDIS_PORT = 6379
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
+    "NAME": "django.contrib.auth.password_validation.UserAttributeSimilarityValidator",
     },
     {
         "NAME": "django.contrib.auth.password_validation.MinimumLengthValidator",
