@@ -3,8 +3,8 @@ from django.test import TestCase, RequestFactory
 from django.http import JsonResponse
 from unittest.mock import Mock, patch
 
-from DevOps_project.utils import VisitCounter
-from .views import get_people, get_visit_count
+# from DevOps_project.utils import VisitCounter
+from .views import get_people
 
 
 class TestGetPeopleView(TestCase):
@@ -21,7 +21,7 @@ class TestGetPeopleView(TestCase):
             last_name="User",
         )
 
-        # Configure the mock Person.objects.all method to return the mock Person instance
+        
         mock_person_objects.return_value = [mock_person]
 
         # Create a request to the view
