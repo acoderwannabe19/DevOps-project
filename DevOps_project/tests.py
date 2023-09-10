@@ -1,7 +1,7 @@
 # myapp/tests.py
 from django.test import TestCase, RequestFactory
 from django.http import JsonResponse
-from unittest.mock import Mock, patch
+from unittest.mock import patch
 
 # from DevOps_project.utils import VisitCounter
 from .views import get_people
