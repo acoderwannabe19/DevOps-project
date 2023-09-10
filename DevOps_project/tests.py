@@ -21,7 +21,6 @@ class TestGetPeopleView(TestCase):
             last_name="User",
         )
 
-        
         mock_person_objects.return_value = [mock_person]
 
         # Create a request to the view
