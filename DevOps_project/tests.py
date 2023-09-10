@@ -6,11 +6,12 @@ from unittest.mock import Mock, patch
 from DevOps_project.utils import VisitCounter
 from .views import get_people, get_visit_count
 
+
 class TestGetPeopleView(TestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
-    @patch('DevOps_project.views.Person.objects.all')
+    @patch("DevOps_project.views.Person.objects.all")
     def test_get_people_view(self, mock_person_objects):
         # Create a mock Person instance for testing
         mock_person = MockPerson(
@@ -19,26 +20,30 @@ class TestGetPeopleView(TestCase):
             first_name="Test",
             last_name="User",
         )
-        
+
         # Configure the mock Person.objects.all method to return the mock Person instance
         mock_person_objects.return_value = [mock_person]
 
         # Create a request to the view
-        request = self.factory.get('/people/')
+        request = self.factory.get("/people/")
         response = get_people(request)
 
         # Verify the response
-        expected_response = JsonResponse([
-            {
-                "username": mock_person.username,
-                "email": mock_person.email,
-                "first_name": mock_person.first_name,
-                "last_name": mock_person.last_name,
-            }
-        ], safe=False)
+        expected_response = JsonResponse(
+            [
+                {
+                    "username": mock_person.username,
+                    "email": mock_person.email,
+                    "first_name": mock_person.first_name,
+                    "last_name": mock_person.last_name,
+                }
+            ],
+            safe=False,
+        )
 
         self.assertEqual(response.content, expected_response.content)
         self.assertEqual(response.status_code, expected_response.status_code)
+
 
 class MockPerson:
     def __init__(self, username, email, first_name, last_name):
@@ -46,7 +51,6 @@ class MockPerson:
         self.email = email
         self.first_name = first_name
         self.last_name = last_name
-
 
 
 # class TestGetVisitCountView(TestCase):
@@ -76,5 +80,3 @@ class MockPerson:
 
 #         self.assertEqual(response.content, expected_response.content)
 #         self.assertEqual(response.status_code, expected_response.status_code)
-
-  
