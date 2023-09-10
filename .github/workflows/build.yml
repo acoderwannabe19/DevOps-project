@@ -23,7 +23,7 @@ jobs:
       run: ruff check .
 
     - name: Run the tests
-      run: docker-compose exec web python manage.py test
+      run: python manage.py test
         
     - name: Setup Docker
       run: |
@@ -31,7 +31,12 @@ jobs:
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build the Docker Compose stack
-      run: docker-compose build
+      run: |
+        docker-compose build
+        docker-compose up
+        docker-compose exec web python manage.py makemigrations
+        docker-compose exec web python manage.py migrate
+
 
     - name: Push the Docker Compose stack to Docker Hub
       run: docker-compose push
