@@ -16,6 +16,7 @@ jobs:
           POSTGRES_DB: people        
           POSTGRES_PASSWORD: awa
           POSTGRES_USER: postgres
+          POSTGRES_HOST: db
         ports:
           - 5432:5432
     steps:
@@ -31,9 +32,22 @@ jobs:
     - name: Check the linting
       run: ruff check .
 
-    - name: Run the tests
-      run: python manage.py test
-        
+    - name: Wait for PostgreSQL to be ready
+      run: |
+        while ! docker exec -i postgres psql -U postgres -c "SELECT 1" > /dev/null 2>&1; do
+            echo "Waiting for PostgreSQL to start..."
+            sleep 5
+        done
+
+    - name: Apply Migrations
+      run: docker-compose exec web python manage.py migrate
+
+    - name: Run Django Tests
+      run: docker-compose exec web python manage.py test
+
+    - name: Clean up Docker Compose
+      run: docker-compose down
+
     - name: Setup Docker
       run: |
         docker --version
@@ -43,9 +57,6 @@ jobs:
       run: |
         docker-compose build
         docker-compose up
-        docker-compose exec web python manage.py makemigrations
-        docker-compose exec web python manage.py migrate
-
 
     - name: Push the Docker Compose stack to Docker Hub
       run: docker-compose push
