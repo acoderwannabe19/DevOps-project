@@ -46,7 +46,7 @@ jobs:
     - name: Setup Docker
       run: |
         docker --version
-        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+        docker login -u nasalane -p dckr_pat_4Kx-EVhITAQ32PNvbXY2NRRnz9M
 
     - name: Build the Docker Compose stack
       run: |
