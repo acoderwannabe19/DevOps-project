@@ -32,7 +32,7 @@ services:
       POSTGRES_PASSWORD: awa
       POSTGRES_HOST: db
 
-  # Redis service .
+  # Redis service
   redis:
     image: redis:alpine
 
