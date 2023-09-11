@@ -49,7 +49,7 @@ jobs:
 
     - name: Build the Docker Compose stack
       run: |
-        docker-compose build -t nasalane/devops_project
+        docker-compose build -t nasalane/DevOps Project
 
     - name: Push the Docker Compose stack to Docker Hub
-      run: docker-compose push nasalane/devops_project
+      run: docker-compose push nasalane/DevOps Project
