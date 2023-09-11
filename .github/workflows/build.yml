@@ -16,7 +16,7 @@ jobs:
           POSTGRES_PASSWORD: awa
           POSTGRES_USER: postgres
         ports:
-          - 5432-5439:5432
+          - 5432:5432
 
       redis:
         image: redis:alpine
