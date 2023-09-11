@@ -46,7 +46,7 @@ jobs:
     - name: Setup Docker
       run: |
         docker --version
-        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }} docker.io
+        docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
     - name: Build the Docker Compose stack
       run: |
