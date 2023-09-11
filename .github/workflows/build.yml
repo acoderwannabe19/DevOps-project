@@ -51,7 +51,6 @@ jobs:
     - name: Build the Docker Compose stack
       run: |
         docker-compose build
-        docker-compose up
 
     - name: Push the Docker Compose stack to Docker Hub
       run: docker-compose push
