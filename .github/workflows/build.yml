@@ -7,8 +7,7 @@ on:
     branches: [main]
 jobs:
   build-ci:
-    runs-on:  ubuntu-latest 
-    container: python:3.11.4-bullseye
+    runs-on: ubuntu-latest 
     services:
       postgres:
         image: postgres:15.4
