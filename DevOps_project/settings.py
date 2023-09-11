@@ -80,8 +80,8 @@ DATABASES = {
         "NAME": "people",
         "USER": "postgres",
         "PASSWORD": "awa",
-        "HOST": "localhost",
-        "PORT": 5432,
+        "HOST": "db",
+        "PORT": 5432
     }
 }
 # Redis settings

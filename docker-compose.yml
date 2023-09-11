@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     image: django-app:1.0  
+    networks:
+     - webnet
     ports:
       - "8000:8000"
     volumes:
@@ -27,6 +29,8 @@ services:
     ports:
       - "5432:5432"
     user: postgres
+    networks:
+     - webnet
     environment:
       POSTGRES_DB: people
       POSTGRES_USER: postgres
@@ -38,3 +42,6 @@ services:
     image: redis:alpine
 
   
+networks:
+  webnet:
+    driver: bridge
