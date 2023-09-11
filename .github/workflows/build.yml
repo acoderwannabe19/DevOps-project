@@ -32,6 +32,7 @@ jobs:
   
     - name: Apply Migrations
       run: |
+        docker-compose down
         docker-compose build
         docker-compose up
         docker-compose exec web python manage.py makemigrations
