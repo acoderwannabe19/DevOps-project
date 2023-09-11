@@ -15,7 +15,8 @@ jobs:
           POSTGRES_DB: people        
           POSTGRES_PASSWORD: awa
           POSTGRES_USER: postgres
-
+        ports:
+          - 5432:5432
     steps:
     - name: Checkout
       uses: actions/checkout@v3
@@ -32,6 +33,7 @@ jobs:
     - name: Apply Migrations
       run: |
         python manage.py makemigrations
+        python manage.py migrate
 
     - name: Run Django Tests
       run: python manage.py test
