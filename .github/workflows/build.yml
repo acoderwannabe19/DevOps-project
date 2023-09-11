@@ -9,6 +9,15 @@ jobs:
   build-ci:
     runs-on:  ubuntu-latest 
     container: python:3.11.4-bullseye
+    services:
+      postgres:
+        image: postgres:15.4
+        env:
+          POSTGRES_DB: people        
+          POSTGRES_PASSWORD: awa
+          POSTGRES_USER: postgres
+        ports:
+          - 5432:5432
     steps:
     - name: Checkout
       uses: actions/checkout@v3

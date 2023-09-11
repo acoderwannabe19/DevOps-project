@@ -1,6 +1,5 @@
 
 import redis
-import os
 
 class VisitCounter:
     def __init__(self):
