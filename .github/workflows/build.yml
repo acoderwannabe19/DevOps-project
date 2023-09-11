@@ -52,4 +52,4 @@ jobs:
         docker-compose build -f docker-compose.yml
 
     - name: Push the Docker Compose stack to Docker Hub
-      run: docker-compose push nasalane/devops_project
+      run: docker-compose push -f docker-compose.yml
