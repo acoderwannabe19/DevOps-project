@@ -43,13 +43,13 @@ jobs:
     - name: Run Django Tests
       run: python manage.py test
 
-    - name: Build the Docker Compose stack
-      run: docker-compose build
-
     - name: Setup Docker
       run: |
-        docker --version
         docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
 
+    - name: Build the Docker Compose stack
+      run: |
+        docker-compose build -t nasalane/devops_project
+
     - name: Push the Docker Compose stack to Docker Hub
-      run: docker-compose push
+      run: docker-compose push nasalane/devops_project
