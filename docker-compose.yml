@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: django-app:1.0 
+    image: nasalane/django-app:1.0 
     ports:
       - "8000:8000"
     volumes:
@@ -22,7 +22,7 @@ services:
 
   # PostgreSQL database
   db:
-    image: postgres:15.4
+    image: nasalane/postgres:15.4
     ports:
       - "5433:5433"
     user: postgres
@@ -34,5 +34,5 @@ services:
 
   # Redis service
   redis:
-    image: redis:alpine
+    image: nasalane/redis:alpine
 
