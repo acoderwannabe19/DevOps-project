@@ -28,9 +28,13 @@ jobs:
 
     - name: Check the linting
       run: ruff check .
-
   
     - name: Apply Migrations
+      env:
+        DJANGO_DB_HOST: db
+        DJANGO_DB_NAME: people
+        DJANGO_DB_USER: postgres
+        DJANGO_DB_PASSWORD: awa
       run: |
         python manage.py makemigrations
         python manage.py migrate
