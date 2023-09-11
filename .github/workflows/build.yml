@@ -17,6 +17,9 @@ jobs:
           POSTGRES_USER: postgres
         ports:
           - 5432:5432
+
+      redis:
+        image: redis:alpine
     steps:
     - name: Checkout
       uses: actions/checkout@v3
