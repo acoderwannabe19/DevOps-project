@@ -12,7 +12,7 @@ services:
       - .:/code
     depends_on:
       - db
-      - redis  # Add a dependency on the Redis service
+      - redis 
     environment:
       - DEBUG=True
       - DJANGO_DB_HOST=db
