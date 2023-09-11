@@ -32,13 +32,7 @@ jobs:
     - name: Check the linting
       run: ruff check .
 
-    - name: Wait for PostgreSQL to be ready
-      run: |
-        while ! docker exec -i postgres psql -U postgres -c "SELECT 1" > /dev/null 2>&1; do
-            echo "Waiting for PostgreSQL to start..."
-            sleep 5
-        done
-
+  
     - name: Apply Migrations
       run: docker-compose exec web python manage.py migrate
 
