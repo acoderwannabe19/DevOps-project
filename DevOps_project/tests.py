@@ -1,13 +1,13 @@
-# myapp/tests.py
-from django.test import TestCase, RequestFactory
+from django.test import SimpleTestCase, RequestFactory
 from django.http import JsonResponse
-from unittest.mock import patch
+from unittest.mock import Mock, patch
 
-# from DevOps_project.utils import VisitCounter
-from .views import get_people
+from DevOps_project.utils import VisitCounter
+
+from .views import get_people, get_visit_count
 
 
-class TestGetPeopleView(TestCase):
+class TestGetPeopleView(SimpleTestCase):
     def setUp(self):
         self.factory = RequestFactory()
 
@@ -52,30 +52,30 @@ class MockPerson:
         self.last_name = last_name
 
 
-# class TestGetVisitCountView(TestCase):
-#     def setUp(self):
-#         self.factory = RequestFactory()
+class TestGetVisitCountView(SimpleTestCase):
+    def setUp(self):
+        self.factory = RequestFactory()
 
-#     @patch('DevOps_project.utils.VisitCounter')
-#     def test_get_visit_count_view(self, mock_visit_counter):
-#         # Create a mock VisitCounter instance
-#         mock_counter = Mock(VisitCounter)
+    @patch('DevOps_project.utils.VisitCounter')
+    def test_get_visit_count_view(self, mock_visit_counter):
+        # Create a mock VisitCounter instance
+        mock_counter = Mock(VisitCounter)
 
-#         # Configure the mock VisitCounter class to return the mock instance
-#         mock_visit_counter.return_value = mock_counter
+        # Configure the mock VisitCounter class to return the mock instance
+        mock_visit_counter.return_value = mock_counter
 
-#         # Mock the increment method of the counter
-#         mock_counter.increment.side_effect = None
+        # Mock the increment method of the counter
+        mock_counter.increment.side_effect = None
 
-#         # Mock the get_count method of the counter to return 42
-#         mock_counter.get_count.return_value = 42
+        # Mock the get_count method of the counter to return 42
+        mock_counter.get_count.return_value = 42
 
-#         # Create a request to the view
-#         request = self.factory.get('/visit-count/')
-#         response = get_visit_count(request)
+        # Create a request to the view
+        request = self.factory.get('/visit-count/')
+        response = get_visit_count(request)
 
-#         # Verify the response
-#         expected_response = JsonResponse({"visit_count": 42})
+        # Verify the response
+        expected_response = JsonResponse({"visit_count": 42})
 
-#         self.assertEqual(response.content, expected_response.content)
-#         self.assertEqual(response.status_code, expected_response.status_code)
+        self.assertEqual(response.content, expected_response.content)
+        self.assertEqual(response.status_code, expected_response.status_code)

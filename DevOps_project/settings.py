@@ -75,26 +75,32 @@ WSGI_APPLICATION = "DevOps_project.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }
-
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
         "NAME": "people",
         "USER": "postgres",
         "PASSWORD": "awa",
-        "HOST": os.getenv("DJANGO_DB_HOST", "localhost"),
+        "HOST": "db",
         "PORT": "5432",
     }
 }
 # Redis settings
-REDIS_HOST = "redis"
+REDIS_HOST = 'redis'
 REDIS_PORT = 6379
+
+# Example settings.py configuration
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": "redis://redis:6379/1",  # Use "redis" as the hostname
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        }
+    }
+}
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.2/ref/settings/#auth-password-validators
