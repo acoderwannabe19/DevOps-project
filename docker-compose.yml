@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: django-app:1.0  # Set the image name and tag here
+    image: django-app:1.0  
     ports:
       - "8000:8000"
     volumes:
