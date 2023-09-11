@@ -32,17 +32,12 @@ jobs:
   
     - name: Apply Migrations
       run: |
-        docker-compose down
-        docker-compose build
-        docker-compose up
-        docker-compose exec web python manage.py makemigrations
-        docker-compose exec web python manage.py migrate
+        python manage.py makemigrations
+        python manage.py migrate
 
     - name: Run Django Tests
-      run: docker-compose exec web python manage.py test
+      run: python manage.py test
 
-    - name: Clean up Docker Compose
-      run: docker-compose down
 
     - name: Setup Docker
       run: |
