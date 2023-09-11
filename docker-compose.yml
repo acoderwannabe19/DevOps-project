@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: django-app:1.0  
+    image: django-app:1.0 
     networks:
      - webnet
     ports:
@@ -16,7 +16,6 @@ services:
       - db
       - redis 
     environment:
-      - DEBUG=True
       - DJANGO_DB_HOST=db
       - DJANGO_DB_PORT=5432
       - DJANGO_DB_NAME=people
