@@ -49,7 +49,9 @@ jobs:
 
     - name: Build the Docker Compose stack
       run: |
-        docker build -t nasalane/django-app:1.0
+        docker-compose build -f docker-compose.yml
+        docker tag django-app:1.0 nasalane/django-app:1.0
+
 
     - name: Push the Docker Compose stack to Docker Hub
       run: docker push nasalane/django-app:1.0
