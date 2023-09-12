@@ -49,7 +49,7 @@ jobs:
 
     - name: Build the Docker Compose stack
       run: |
-        docker-compose build -f docker-compose.yml
+        docker-compose build
         docker tag django-app:1.0 nasalane/django-app:1.0
 
 
