@@ -50,6 +50,7 @@ jobs:
 
     - name: Build the Docker Compose stack
       run: |
+        docker compose down
         docker-compose build
         docker-compose up
         docker tag django-app:1.0 nasalane/django-app:1.0
