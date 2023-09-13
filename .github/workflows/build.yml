@@ -68,3 +68,17 @@ jobs:
         manifest-path: Deployment_files/app-deployment.yaml
         new-image-tag: nasalane/django-app:1.0
         container-name: django-app
+
+    - name: Update postgres db Image
+      uses: Charlyzzz/update-k8s-image@v1.7.1
+      with:
+        manifest-path: Deployment_files/postgres-deployment.yaml
+        new-image-tag: nasalane/postgres:15.4
+        container-name: postgres
+
+    - name: Update redis Image
+      uses: Charlyzzz/update-k8s-image@v1.7.1
+      with:
+        manifest-path: Deployment_files/redis-deployment.yaml
+        new-image-tag: nasalane/redis:alpine
+        container-name: redis
