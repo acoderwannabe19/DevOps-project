@@ -1,5 +1,4 @@
 import redis
-import os
 
 
 class VisitCounter:
