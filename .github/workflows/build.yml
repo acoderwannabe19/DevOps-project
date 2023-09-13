@@ -15,9 +15,9 @@ jobs:
           POSTGRES_DB: people        
           POSTGRES_PASSWORD: awa
           POSTGRES_USER: postgres
-          POSTGRES_HOST: db
         ports:
           - 5432:5432
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
 
       redis:
         image: redis:alpine
@@ -36,13 +36,12 @@ jobs:
     - name: Check the linting
       run: ruff check .
   
-    # - name: Apply Migrations
-    #   run: |
-    #     python manage.py makemigrations
-    #     python manage.py migrate
+    - name: Apply Migrations
+      run: |
+        python manage.py migrate
 
-    # - name: Run Django Tests
-    #   run: python manage.py test
+    - name: Run Django Tests
+      run: python manage.py test
 
     - name: Setup Docker
       run: |
@@ -50,17 +49,10 @@ jobs:
 
     - name: Build the Docker Compose stack
       run: |
-        docker compose down
         docker-compose build
-        docker-compose up
         docker tag django-app:1.0 nasalane/django-app:1.0
         docker tag postgres:15.4 nasalane/postgres:15.4
         docker tag redis:alpine nasalane/redis:alpine
-
-    - name: Test
-      run: |
-        docker-compose exec web python manage.py migrate
-        docker-compose exec web python manage.py test
 
 
     - name: Push the Docker Compose stack to Docker Hub

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,7 +26,7 @@ SECRET_KEY = "django-insecure-trxs32zm)mkj7k@_dxq1eg+m0%2@(sf-jc&mp#h9n$)8@%6rrd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -77,9 +78,9 @@ WSGI_APPLICATION = "DevOps_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "people",
-        "USER": "postgres",
-        "PASSWORD": "awa",
+        "NAME": os.environ.get('DJANGO_DB_NAME'),
+        "USER": os.environ.get('DJANGO_DB_USER'),
+        "PASSWORD": os.environ.get('DJANGO_DB_PASSWORD'),
         "HOST": "db",
         "PORT": 5432,
     }
