@@ -50,8 +50,13 @@ jobs:
     - name: Build the Docker Compose stack
       run: |
         docker-compose build
+        docker tag django-app:1.0 nasalane/django-app:1.0
+        docker tag postgres:15.4 nasalane/postgres:15.4
+        docker tag redis:alpine nasalane/redis:alpine
 
 
     - name: Push the Docker Compose stack to Docker Hub
       run: |
-        docker-compose push 
+        docker push nasalane/django-app:1.0
+        docker push nasalane/postgres:15.4
+        docker push nasalane/redis:alpine
