@@ -23,7 +23,6 @@ jobs:
         image: redis:alpine
         ports:
           - 6379:6379
-
     env:
       DJANGO_DB_HOST: localhost
       REDIS_HOST: localhost
