@@ -15,6 +15,7 @@ jobs:
           POSTGRES_DB: people        
           POSTGRES_PASSWORD: awa
           POSTGRES_USER: postgres
+          POSTGRES_HOST: db
         ports:
           - 5432:5432
 
