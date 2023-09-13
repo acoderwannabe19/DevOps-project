@@ -78,9 +78,9 @@ WSGI_APPLICATION = "DevOps_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DJANGO_DB_NAME"),
-        "USER": os.environ.get("DJANGO_DB_USER"),
-        "PASSWORD": os.environ.get("DJANGO_DB_PASSWORD"),
+        "NAME": os.getenv("DJANGO_DB_NAME"),
+        "USER": os.getenv("DJANGO_DB_USER"),
+        "PASSWORD": os.getenv("DJANGO_DB_PASSWORD"),
         "HOST": os.getenv("db", "localhost"),
         "PORT": 5432,
     }
