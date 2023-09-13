@@ -27,7 +27,7 @@ metadata:
   name: redis-service
 spec:
   selector:
-    app: django-app 
+    app: redis-app 
   ports:
     - protocol: TCP
       port: 6379                  
