@@ -1,9 +1,10 @@
 import redis
+import os
 
 
 class VisitCounter:
     def __init__(self):
-        self.redis_client = redis.StrictRedis(host="redis", port=6379, db=0)
+        self.redis_client = redis.StrictRedis(host=os.getenv("redis", "localhost"), port=6379, db=0)
 
     def increment(self):
         self.redis_client.incr("visit_count")
