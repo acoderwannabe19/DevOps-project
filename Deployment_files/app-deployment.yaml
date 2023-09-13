@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: django-app
+  labels:
+    app: django-app
+  annotations:
+    argocd.argoproj.io/sync-wave: "3"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: django-app
+  template:
+    metadata:
+      labels:
+        app: django-app
+    spec:
+      containers:
+      - name: django-app                 
+        image: django-app-image:1.0                     
+        ports:
+        - containerPort: 8000
+        env:
+        - name: DJANGO_DB_USER
+          valueFrom: 
+            secretKeyRef:
+              name: django-app-secret
+              key: postgres-db-user
+        - name: DJANGO_DB_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: django-app-secret
+              key: postgres-db-password
+        - name: DJANGO_DB_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: postgres-configmap
+              key: database_url
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: django-app-service
+spec:
+  selector:
+    app: django-app
+  type: LoadBalancer  
+  ports:
+    - protocol: TCP
+      port: 8000                  
+      targetPort: 8000           
+      nodePort: 30000            
