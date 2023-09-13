@@ -36,13 +36,13 @@ jobs:
     - name: Check the linting
       run: ruff check .
   
-    - name: Apply Migrations
-      run: |
-        python manage.py makemigrations
-        python manage.py migrate
+    # - name: Apply Migrations
+    #   run: |
+    #     python manage.py makemigrations
+    #     python manage.py migrate
 
-    - name: Run Django Tests
-      run: python manage.py test
+    # - name: Run Django Tests
+    #   run: python manage.py test
 
     - name: Setup Docker
       run: |
@@ -54,6 +54,11 @@ jobs:
         docker tag django-app:1.0 nasalane/django-app:1.0
         docker tag postgres:15.4 nasalane/postgres:15.4
         docker tag redis:alpine nasalane/redis:alpine
+
+    - name: Test
+      run: |
+        docker-compose exec web python manage.py migrate
+        docker-compose exec web python manage.py test
 
 
     - name: Push the Docker Compose stack to Docker Hub
