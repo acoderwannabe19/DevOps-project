@@ -49,6 +49,7 @@ jobs:
 
     - name: Build the Docker Compose stack
       run: |
+        DJANGO_DB_HOST=db
         docker-compose build
 
 

@@ -19,9 +19,7 @@ services:
       - DJANGO_DB_NAME=people
       - DJANGO_DB_USER=postgres
       - DJANGO_DB_PASSWORD=awa
-    networks:
-      - mynetwork
-
+  
   # PostgreSQL database
   db:
     image: nasalane/postgres:15.4
@@ -32,16 +30,10 @@ services:
       POSTGRES_DB: people
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: awa
-    networks:
-      - mynetwork
 
   # Redis service 
   redis:
     image: nasalane/redis:alpine
     ports:
       - "6379:6379"
-    networks:
-      - mynetwork
 
-networks:
-  mynetwork:
