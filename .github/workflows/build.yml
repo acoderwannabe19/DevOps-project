@@ -57,6 +57,4 @@ jobs:
 
     - name: Push the Docker Compose stack to Docker Hub
       run: |
-        docker push nasalane/django-app:1.0
-        docker push nasalane/postgres:15.4
-        docker push nasalane/redis:alpine
+        docker-compose push 
