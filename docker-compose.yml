@@ -23,6 +23,8 @@ services:
   # PostgreSQL database
   db:
     image: nasalane/postgres:15.4
+    ports:
+      - "5432:5432"
     user: postgres
     environment:
       POSTGRES_DB: people
@@ -32,4 +34,6 @@ services:
   # Redis service 
   redis:
     image: nasalane/redis:alpine
+    ports:
+      - "6379:6379"
 
