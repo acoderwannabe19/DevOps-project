@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
     image: nasalane/django-app:1.0 
+    networks:
+      - custom_network
     ports:
       - "8000:8000"
     volumes:
@@ -19,13 +21,15 @@ services:
       - DJANGO_DB_NAME=people
       - DJANGO_DB_USER=postgres
       - DJANGO_DB_PASSWORD=awa
-  
+
   # PostgreSQL database
   db:
     image: nasalane/postgres:15.4
     ports:
       - "5432:5432"
     user: postgres
+    networks:
+      - custom_network
     environment:
       POSTGRES_DB: people
       POSTGRES_USER: postgres
@@ -36,4 +40,8 @@ services:
     image: nasalane/redis:alpine
     ports:
       - "6379:6379"
+    networks:
+      - custom_network
 
+networks:
+  custom_network:
