@@ -26,7 +26,7 @@ SECRET_KEY = "django-insecure-trxs32zm)mkj7k@_dxq1eg+m0%2@(sf-jc&mp#h9n$)8@%6rrd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['0.0.0.0']
+ALLOWED_HOSTS = ["*"]
 
 
 # Application definition
@@ -78,11 +78,11 @@ WSGI_APPLICATION = "DevOps_project.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.environ.get("DJANGO_DB_NAME"),
-        "USER": os.environ.get("DJANGO_DB_USER"),
-        "PASSWORD": os.environ.get("DJANGO_DB_PASSWORD"),
-        "HOST": os.environ.get("DJANGO_DB_HOST"),
-        # "PORT": os.environ.get("DJANGO_DB_PORT", "5432"),
+        "NAME": "people",
+        "USER": "postgres",
+        "PASSWORD": "awa",
+        "HOST": os.environ.get("DJANGO_DB_HOST", "db"),
+        "PORT": "5432",
     }
 }
 # Redis settings
