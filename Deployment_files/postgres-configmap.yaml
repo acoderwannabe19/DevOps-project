@@ -6,3 +6,4 @@ metadata:
     argocd.argoproj.io/sync-wave: "6"
 data:
   database_url: db
+

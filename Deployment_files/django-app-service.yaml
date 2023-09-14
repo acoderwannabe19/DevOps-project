@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: django-app-service
   annotations:
-    argocd.argoproj.io/sync-wave: "8"
+    argocd.argoproj.io/sync-wave: "9"
 spec:
   selector:
     app: django-app
