@@ -22,6 +22,13 @@ spec:
         ports:
         - containerPort: 8000
         env:
+        - name: DJANGO_DB_HOST
+          valueFrom: 
+            configMapKeyRef:
+              name: postgres-configmap
+              key: database_url
+        - name: DJANGO_DB_PORT
+          value: "5432"
         - name: DJANGO_DB_USER
           valueFrom: 
             secretKeyRef:
@@ -32,8 +39,5 @@ spec:
             secretKeyRef:
               name: django-app-secret
               key: postgres-db-password
-        - name: DJANGO_DB_HOST
-          value: "10.108.131.37"
-        - name: DJANGO_DB_PORT
-          value: "5432"
+
                  
