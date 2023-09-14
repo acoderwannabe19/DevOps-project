@@ -6,7 +6,7 @@ from .settings import REDIS_HOST
 class VisitCounter:
     def __init__(self):
         self.redis_client = redis.StrictRedis(
-            host=REDIS_HOST, port=6379, db=0
+            host=os.environ.get("REDIS_HOST", "redis"), port=6379, db=1
         )
 
     def increment(self):
