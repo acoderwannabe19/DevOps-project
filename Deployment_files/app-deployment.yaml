@@ -34,4 +34,6 @@ spec:
               key: postgres-db-password
         - name: DJANGO_DB_HOST
           value: "10.108.131.37"
+        - name: DJANGO_DB_PORT
+          value: "5432"
                  
