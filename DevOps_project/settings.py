@@ -85,6 +85,7 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+
 # Redis settings
 CACHES = {
     "default": {
