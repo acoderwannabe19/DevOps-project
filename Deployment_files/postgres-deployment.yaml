@@ -1,0 +1,35 @@
+apiVersion: apps/v1      
+kind: Deployment
+metadata:
+  name: postgres-deployment
+  labels:
+    app: postgres
+  annotations:
+    argocd.argoproj.io/sync-wave: "2"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: postgres
+  template:
+    metadata:
+      labels:
+        app: postgres
+    spec:
+      containers:
+      - name: postgres
+        image: nasalane/postgres:15.4
+        ports:
+        - containerPort: 5432         
+        env:
+        - name: POSTGRES_USER
+          valueFrom:
+            secretKeyRef:
+              name: django-app-secret
+              key: postgres-db-user
+        - name: POSTGRES_PASSWORD
+          valueFrom: 
+            secretKeyRef:
+              name: django-app-secret
+              key: postgres-db-password
+
