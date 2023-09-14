@@ -1,6 +1,5 @@
 import redis
 import os
-from .settings import REDIS_HOST
 
 
 class VisitCounter:
