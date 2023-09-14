@@ -33,8 +33,5 @@ spec:
               name: django-app-secret
               key: postgres-db-password
         - name: DJANGO_DB_HOST
-          valueFrom: 
-            configMapKeyRef:
-              name: postgres-configmap
-              key: database_url
+          value: "10.108.131.37"
                  
