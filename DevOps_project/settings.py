@@ -77,12 +77,12 @@ WSGI_APPLICATION = "DevOps_project.wsgi.application"
 
 DATABASES = {
     "default": {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'people',
-        'USER': os.getenv('DJANGO_DB_USER','postgres'),
-        'PASSWORD': os.getenv('DJANGO_DB_PASSWORD','awa'),
-        'HOST': os.getenv('DJANGO_DB_HOST','db'),
-        'PORT': os.getenv('DJANGO_DB_PORT', 5432)
+        "ENGINE": "django.db.backends.postgresql",
+        "NAME": "people",
+        "USER": "postgres",
+        "PASSWORD": "awa",
+        "HOST": os.environ.get("DJANGO_DB_HOST", "db"),
+        "PORT": "5432",
     }
 }
 # Redis settings
