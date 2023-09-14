@@ -5,19 +5,11 @@ metadata:
   annotations:
     argocd.argoproj.io/sync-wave: "9"
 spec:
-  defaultBackend:
-    service:
-      name: django-app-service
-      port:
-        number: 8000
   rules:
-  - host: ingress.local
+  - host: kubernetes.docker.internal
     http:
       paths:
-      - path: / 
-        pathType: Prefix
+      - path: /
         backend:
-          service:
-            name:  webapp-service
-            port: 
-              number: 8000
+          serviceName: django-app-service 
+          servicePort: 8000
