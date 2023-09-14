@@ -32,15 +32,4 @@ spec:
             secretKeyRef:
               name: django-app-secret
               key: postgres-db-password
----
-apiVersion: v1
-kind: Service
-metadata:
-  name: postgres-service
-spec:
-  selector:
-    app: postgres
-  ports:
-    - protocol: TCP
-      port: 5432               
-      targetPort: 5432       
+
