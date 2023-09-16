@@ -22,6 +22,7 @@ services:
       - DJANGO_DB_NAME=people
       - DJANGO_DB_USER=postgres
       - DJANGO_DB_PASSWORD=awa
+      - REDIS_HOST=redis
 
   # PostgreSQL database
   db:
