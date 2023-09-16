@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: postgres
-        image: nasalane/postgres:15.4
+        image: postgres:15.4
         ports:
         - containerPort: 5432         
         env:
